@@ -1,0 +1,4 @@
+pandas>=2.1
+pyarrow>=14
+matplotlib>=3.8   # apenas para "report --plot"
+pytest>=8         # apenas para os testes

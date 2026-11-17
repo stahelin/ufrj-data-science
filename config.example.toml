@@ -1,0 +1,30 @@
+# Copie para config.toml e ajuste. Credenciais NÃO vão aqui:
+# use as variáveis de ambiente PROFIT_KEY, PROFIT_USER, PROFIT_PASSWORD
+# (ou o programa pergunta no terminal).
+
+[profit]
+dll_path = "C:/ProfitDLL/DLLs/Win64/ProfitDLL.dll"
+
+[market]
+# WINFUT/WDOFUT = contrato vigente (o manual usa esse formato), bolsa "F" = BMF
+tickers = ["WINFUT", "WDOFUT"]
+exchange = "F"
+session_start = "08:55"   # início das requisições de histórico
+session_end = "18:35"     # o modo live encerra sozinho neste horário
+
+[storage]
+# Pasta do Google Drive para Computador (sincroniza sozinho com a nuvem).
+data_dir = "G:/Meu Drive/profit_data"
+# Pasta LOCAL onde cada arquivo é montado antes de ir para o Drive.
+staging_dir = "C:/profit_staging"
+# Negócios brutos: necessários para recalcular o fluxo por corretora de forma
+# exata (dedup após reinício). ~20–60 MB/dia por ativo em Parquet zstd.
+save_raw_trades = true
+flush_interval_s = 600    # grava a cada 10 min
+bar_interval_s = 60       # barras de 1 minuto
+
+[brokers]
+# Trechos de nome (sem diferenciar maiúsculas) para agrupar IDs de corretoras
+# nos comandos report/study. Confira os nomes reais em data_dir/agents.csv.
+watchlist = ["Morgan", "UBS", "Goldman", "J.P. Morgan", "BTG", "Itau", "XP", "Bradesco", "Santander", "Safra"]
+opening_window_end = "09:30"
